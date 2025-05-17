@@ -35,7 +35,6 @@ function ScheduleClass() {
                     },
                 });
                 const data = await response.json();
-                console.log(`data---------`, data);
                 if (data && data.paper) {
                     setPapers(data.paper);
                 }
@@ -85,7 +84,6 @@ function ScheduleClass() {
             }
         }
         try {
-            console.log(" handle submit/payload-- ", payload);
             const response = await fetch("http://localhost:3000/api/scheduleClass", {
                 method: "POST",
                 headers: {
@@ -105,6 +103,14 @@ function ScheduleClass() {
         }
     };
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('role');
+        localStorage.removeItem('userName');
+        navigate('/');
+    };
 
     return (
         <div className="dashboard-container">
@@ -131,7 +137,7 @@ function ScheduleClass() {
                         <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
                         <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
                     </svg> Papers</button>
-                    <button className="sidebar-link" id="bottone5" onClick={() => navigate('/logout')}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-power" viewBox="0 0 16 16">
+                    <button className="sidebar-link" id="bottone5" onClick={handleLogout}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-power" viewBox="0 0 16 16">
                         <path d="M7.5 1v7h1V1z" />
                         <path d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812" />
                     </svg> Logout</button>

@@ -78,9 +78,6 @@ function Home() {
                 const paperData = await paperRes.json();
                 setPaperCount(paperData.paper.length);
                 setDegreeCounts(paperData.degreeCount.length);
-                // Save to state
-                console.log("paperData.degreeCount.length-- ", paperData.degreeCount.length);
-                console.log("degreeCounts-- ", degreeCounts);
             } catch (error) {
                 console.error("Error fetching counts:", error);
             }

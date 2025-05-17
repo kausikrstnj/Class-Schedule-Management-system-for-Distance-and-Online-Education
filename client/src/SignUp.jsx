@@ -18,7 +18,6 @@ function SignUp() {
     const password = document.getElementById("password").value;
     const formData = { name, email, password };
     try {
-      console.log("formData- ", formData);
       const response = await fetch("http://localhost:3000/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -27,8 +27,6 @@ function Login() {
             });
 
             const data = await response.json();
-            //console.log("🎉 Login response:", data);
-
             if (data.msg === 'Email or password is incorrect.') {
                 setValues({ ...values, error: data.msg });
             } else {
